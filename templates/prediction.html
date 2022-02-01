@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+   <head>
+	   <title>A-RAY</title>
+   </head>
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  body, html{
+    height: 100%;
+  }
+  *{
+    box-sizing: border-box;
+  }
+  .bg-image{
+    background-image: url(../static/images/sentimental-img.png); 
+    /* background: linear-gradient(to bottom right, #ff9966 0%, #ffff99 100%); */
+    filter :blur(5px);
+   -webkit-filter: blur(3px);
+   height: 700px;
+   background-position: center;
+   background-repeat: no-repeat;
+   background-size: cover;
+     
+  }
+.container {
+  position: absolute;
+  text-align: center;
+  color: white;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.2);
+  font-weight: bold;
+ 
+  border-radius: 8px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  z-index:2;
+  width: 80%;
+  padding: 20px;
+}
+/* Button styling*/
+#myBtn {
+   background-color: #ff8000;
+   color: rgb(243, 240, 227);
+   width: 150px;
+   height: 50px;
+   border-radius: 12px;
+}
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  /* padding-top: 100px;  Location of the box */
+  left: 15%;
+  top:-5%; 
+  width: 80%; 
+  height: 95%;
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  resize: both;
+}
+
+/* Modal Content */
+.modal-content {
+  
+  margin: auto;
+  padding: 20px;
+  
+  width: 90%;
+  height: 90%;
+  color: #000;
+}
+
+/* The Close Button */
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+</style>
+   <body >
+   <div class="bg-image"></div>
+    <div class="container">
+	    <div class="table-users">
+
+		    <h2 class="header" style="text-align: center;"><u>Prediction</u></h2>
+         <h1 style="text-align: center;">Hi {{name}} </h1>
+         <h2 style="text-align: center;"><i>You just entered the message </i> <h1>{{message}} </h1> 
+          <!--
+         <h4 style="text-align: center;">The sentiment is : </h4>
+         <p style="text-align: center;">{{prediction}}</p>
+         -->
+           {% if prediction=="positive" %}
+           <h2 style="text-align: center;">Seems like you have a very positive approach towards online learning experience.</h2>
+             <img src="../static/images/positive.jpeg" alt="positive" width="100px" height="100px"> <br/>
+             
+             <!-- Trigger/Open The Modal -->
+             <button id="myBtn">Click Here</button>
+
+              <!-- The Modal -->
+              <div id="myModal" class="modal">
+
+               <!-- Modal content -->
+               <div class="modal-content">
+                  <span class="close">&times;</span>
+                  <img src="../static/images/guide_pos.png" alt="Guidance" width= "100%" height= "100%">
+               </div>
+
+              </div>
+           {% endif %}
+           {% if prediction=="negative" %}
+           <h2 style="text-align: center;">Seems like you are disappointed by the online learning experience.</h2>
+             <img src="../static/images/negative.jpeg" alt="negative" width="100px" height="100px"> <br/>
+             
+             <!-- Trigger/Open The Modal -->
+             <button id="myBtn">Click here</button>
+
+             <!-- The Modal -->
+              <div id="myModal" class="modal">
+
+               <!-- Modal content -->
+               <div class="modal-content">
+                 <span class="close">&times;</span>
+                 <img src="../static/images/guide_neg.png" alt="Guidance" width= "100%" height= "100%">
+                </div>
+
+              </div>
+           {% endif %}
+         
+         <br/><br/>
+         <img src="https://freepngimg.com/thumb/logo/87481-of-thanks-letter-text-logo-calligraphy-drawing.png" width="500px" height="100px" alt="Appreciation" style="align-items : center">  
+      </div>
+        
+    </div>  
+    
+    
+    
+    <script>
+      // Get the modal
+      var modal = document.getElementById("myModal");
+      
+      // Get the button that opens the modal
+      var btn = document.getElementById("myBtn");
+      
+      // Get the <span> element that closes the modal
+      var span = document.getElementsByClassName("close")[0];
+      
+      // When the user clicks the button, open the modal 
+      btn.onclick = function() {
+        modal.style.display = "block";
+      }
+      
+      // When the user clicks on <span> (x), close the modal
+      span.onclick = function() {
+        modal.style.display = "none";
+      }
+      
+      // When the user clicks anywhere outside of the modal, close it
+      window.onclick = function(event) {
+        if (event.target == modal) {
+          modal.style.display = "none";
+        }
+      }
+      </script>
+   </body>
+</html>
